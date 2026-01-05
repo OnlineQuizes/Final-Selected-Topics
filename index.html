@@ -1522,20 +1522,34 @@
         answerContainer.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     }
 
-    // AI API call with smart feedback
-    async function callAIWithRetry(prompt, maxRetries = 3, updateStatusCallback) {
+    // AI API call with infinite retry & dynamic messages
+    async function callAIWithRetry(prompt, maxRetries = 20, updateStatusCallback) {
         let lastError;
         
+        // رسائل متنوعة تظهر للمستخدم أثناء الانتظار
+        const statusMessages = [
+            "الشبكة مضغوطة قليلاً، نحاول مجدداً...",
+            "جاري تحليل الإجابة بدقة...",
+            "نواجه ضغطاً عالياً، شكراً لصبرك...",
+            "محاولة اتصال جديدة بالسيرفر...",
+            "لم نيأس! جاري المحاولة...",
+            "نبحث عن أفضل تقييم لك...",
+            "ثوانٍ إضافية والنتيجة تكون جاهزة..."
+        ];
+
         for (let attempt = 1; attempt <= maxRetries; attempt++) {
             try {
-                // If it's a retry (attempt > 1), show a friendly message
+                // تحديث الرسالة بناءً على رقم المحاولة (تدوير الرسائل)
                 if (attempt > 1 && updateStatusCallback) {
-                    updateStatusCallback("جاري تحليل أدق للإجابة..."); // رسالة لطيفة بدلاً من Retry
+                    // اختيار رسالة من القائمة بالترتيب
+                    const msgIndex = (attempt - 2) % statusMessages.length;
+                    updateStatusCallback(statusMessages[msgIndex]);
                 }
 
                 console.log(`AI attempt ${attempt} of ${maxRetries}`);
                 const response = await apifree.chat(prompt);
                 
+                // التحقق من صحة الرد
                 if (response && response.trim().length > 10) {
                     return response;
                 } else {
@@ -1547,9 +1561,10 @@
                 console.log(`Attempt ${attempt} failed:`, error.message);
                 
                 if (attempt < maxRetries) {
-                    // Slight delay before retry to be gentle on API
-                    if (updateStatusCallback) updateStatusCallback("لحظات بسيطة..."); 
-                    await new Promise(r => setTimeout(r, 1500));
+                    // انتظار تدريجي (كل مرة نزيد وقت الانتظار قليلاً لتقليل الضغط)
+                    // يبدأ من 1.5 ثانية ويصل كحد أقصى لـ 4 ثواني
+                    const delay = Math.min(1500 + (attempt * 500), 4000);
+                    await new Promise(r => setTimeout(r, delay));
                     continue;
                 }
             }
@@ -1644,19 +1659,19 @@
         
         // Disable buttons
         isAIRequestInProgress = true;
-        const allButtons = document.querySelectorAll('.btn-check-ai, .btn-show-answer'); // تعطيل كل الأزرار مؤقتاً
+        const allButtons = document.querySelectorAll('.btn-check-ai, .btn-show-answer'); 
         allButtons.forEach(btn => btn.disabled = true);
 
-        // Loading state on the specific button
+        // Loading state
         const originalBtnText = currentAiBtn.innerHTML;
-        currentAiBtn.innerHTML = '<span class="ai-loading"></span> جارٍ التحقق (يمكن أن يستغرق عدة ثواني)...';
+        currentAiBtn.innerHTML = '<span class="ai-loading"></span> جاري التحقق...';
         
         try {
             const question = questions.find(q => q.id === questionNumber).question;
             const prompt = aiPromptTemplate(question, userAnswer);
             
-            // Call AI with a callback to update button text if it takes long
-            const aiRawResponse = await callAIWithRetry(prompt, 3, (statusText) => {
+            // رفعنا عدد المحاولات إلى 20 (عملياً سيستمر يحاول لفترة طويلة جداً حتى ينجح)
+            const aiRawResponse = await callAIWithRetry(prompt, 20, (statusText) => {
                 currentAiBtn.innerHTML = `<span class="ai-loading"></span> ${statusText}`;
             });
             
@@ -1675,12 +1690,13 @@
             setTimeout(() => {
                 isAIRequestInProgress = false;
                 allButtons.forEach(btn => btn.disabled = false);
-                currentAiBtn.innerHTML = originalBtnText; // استرجاع النص الأصلي
+                currentAiBtn.innerHTML = originalBtnText; 
             }, 2000);
             
         } catch (error) {
             console.error("AI Error:", error);
-            aiContent.innerHTML = '<div class="ai-score score-poor">Error</div><div class="feedback-content"><strong>Feedback:</strong> تعذر الاتصال بالذكاء الاصطناعي حالياً، حاول مرة أخرى لاحقاً.</div>';
+            // رسالة الخطأ النهائية إذا فشلت حتى الـ 20 محاولة
+            aiContent.innerHTML = '<div class="ai-score score-poor">Error</div><div class="feedback-content"><strong>Feedback:</strong> نعتذر بشدة، السيرفر مشغول جداً حالياً. يرجى الانتظار دقيقة والمحاولة مجدداً.</div>';
             aiResponse.classList.add('show');
             aiResponse.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
             
