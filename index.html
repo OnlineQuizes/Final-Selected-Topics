@@ -373,11 +373,20 @@
     .btn-show-answer {
         background: var(--button-secondary-bg);
     }
-
 .btn-check-ai {
-        /* تدرج من الغامق إلى الأفتح قليلاً، يعطي عمقاً */
-        background: linear-gradient(135deg, #164e63, #2a676f); 
-        color: white; /* تأكيد لون النص */
+        /* تدرج عصري: تيل (الثيم) -> أزرق سماوي -> نيلي (AI Vibe) */
+        background: linear-gradient(135deg, #2a676f 0%, #0284c7 50%, #4f46e5 100%);
+        background-size: 200% auto; /* عشان التدرج يكون ناعم */
+        color: white;
+        border: 1px solid rgba(255,255,255,0.1); /* لمعة خفيفة */
+        transition: all 0.3s ease;
+    }
+    
+    .btn-check-ai:hover:not(:disabled) {
+         /* تحريك التدرج عند الهوفر ليعطي شكل حيوي */
+         background-position: right center;
+         transform: translateY(-2px);
+         box-shadow: 0 6px 20px rgba(79, 70, 229, 0.35); /* ظل نيلي جذاب */
     }
     
 
