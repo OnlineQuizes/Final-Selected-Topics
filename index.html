@@ -1,0 +1,1734 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Final Selected Topics</title>
+    <script src="https://apifreellm.com/apifree.min.js"></script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>
+      window.MathJax = {
+        tex: {
+          inlineMath: [['\\(', '\\)']],
+          displayMath: [['$$', '$$']],
+        }
+      };
+    </script>
+    <style>
+    :root {
+        --bg-color: #f8fafc;
+        --text-color: #161b24;
+        --primary-color: #2a676f;
+        --secondary-color: #3a8893;
+        --card-bg: rgba(255, 255, 255, 0.95);
+        --border-color: rgba(224, 224, 224, 0.7);
+        --option-bg: #f8fafc;
+        --option-hover-bg: #e2e8f0;
+        --quiz-header-bg: linear-gradient(135deg, #2a676f 0%, #3a8893 100%);
+        --correct-bg: #e8f5e9;
+        --correct-border: #43a047;
+        --incorrect-bg: #ffebee;
+        --incorrect-border: #e53935;
+        --gradient-color: rgba(42, 103, 111, 0.03);
+        --background-pattern: url("data:image/svg+xml,%3Csvg width='52' height='26' viewBox='0 0 52 26' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%232a676f' fill-opacity='0.05'%3E%3Cpath d='M10 10c0-2.21-1.79-4-4-4-3.314 0-6-2.686-6-6h2c0 2.21 1.79 4 4 4 3.314 0 6 2.686 6 6 0 2.21 1.79 4 4 4 3.314 0 6 2.686 6 6 0 2.21 1.79 4 4 4v2c-3.314 0-6-2.686-6-6 0-2.21-1.79-4-4-4-3.314 0-6-2.686-6-6zm25.464-1.95l8.486 8.486-1.414 1.414-8.486-8.486 1.414-1.414z' /%3E%3C/g%3E%3C/svg%3E");
+        --slide-bg: #ffffff;
+        --slide-header: #2a676f;
+        --slide-border: #d1d5db;
+        --grammar-bg: #f1f5f9;
+        --grammar-border: #cbd5e1;
+        --glass-bg: rgba(42, 103, 111, 0.1);
+        --glass-border: rgba(42, 103, 111, 0.2);
+        --glass-shadow: 0 4px 20px rgba(42, 103, 111, 0.15);
+        --button-primary-bg: linear-gradient(135deg, #2a676f, #3a8893);
+        --button-secondary-bg: linear-gradient(135deg, #a98a50, #c5a66a);
+        --code-bg: #f1f5f9;
+        --code-text: #1e293b;
+        --expl-bg: #fffde7;
+        --expl-border: #fbc02d;
+        --expl-text: #5d4037;
+        
+        /* تعديل ألوان الـ AI لتناسب الثيم (Teal) */
+        --ai-answer-bg: rgba(42, 103, 111, 0.08); /* خلفية تيل فاتحة جداً */
+        --ai-answer-border: #2a676f; /* حدود بلون الثيم */
+        --ai-answer-text: #1a4a50; /* نص تيل غامق للقراءة */
+        
+        --score-excellent: #2e7d32;
+        --score-good: #f57c00;
+        --score-poor: #d32f2f;
+        --ai-color: #2a676f; /* لون أيقونات وعناوين الـ AI */
+        --model-answer-bg: #e8f5e9;
+        --model-answer-border: #4caf50;
+        --model-answer-text: #1b5e20;
+    }
+
+    [data-theme="dark"] {
+        --bg-color: #1a202c;
+        --text-color: #e2e8f0;
+        --primary-color: #38b2ac;
+        --secondary-color: #2a676f;
+        --card-bg: rgba(26, 32, 44, 0.95);
+        --border-color: rgba(74, 85, 104, 0.7);
+        --option-bg: rgba(45, 55, 72, 0.5);
+        --option-hover-bg: rgba(66, 153, 225, 0.1);
+        --quiz-header-bg: linear-gradient(135deg, #2a676f 0%, #3a8893 100%);
+        --correct-bg: rgba(72, 187, 120, 0.1);
+        --correct-border: #48bb78;
+        --incorrect-bg: rgba(245, 101, 101, 0.1);
+        --incorrect-border: #f56565;
+        --gradient-color: transparent;
+        --background-pattern: none;
+        --slide-bg: #2d3748;
+        --slide-header: #38b2ac;
+        --slide-border: #4a5568;
+        --grammar-bg: #4a5568;
+        --grammar-border: #718096;
+        --glass-bg: rgba(56, 178, 172, 0.1);
+        --glass-border: rgba(56, 178, 172, 0.2);
+        --glass-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        --button-primary-bg: linear-gradient(135deg, #38b2ac, #2a676f);
+        --button-secondary-bg: linear-gradient(135deg, #f6ad55, #ed8936);
+        --code-bg: #0f172a;
+        --code-text: #e2e8f0;
+        --expl-bg: rgba(251, 192, 45, 0.15);
+        --expl-border: #fdd835;
+        --expl-text: #fff9c4;
+        
+        /* تعديل ألوان الـ AI في الدارك مود */
+        --ai-answer-bg: rgba(56, 178, 172, 0.15); /* تيل شفاف */
+        --ai-answer-border: #38b2ac;
+        --ai-answer-text: #b2f5ea; /* نص فاتح ومقروء */
+        
+        /* جعل ألوان التقييم أغمق وأوضح في الدارك مود */
+        --score-excellent: #1b5e20; /* أخضر غامق بدلاً من الفاتح */
+        --score-good: #e65100;    /* برتقالي غامق */
+        --score-poor: #b71c1c;    /* أحمر غامق */
+        
+        --ai-color: #4fd1c5;
+        --model-answer-bg: rgba(76, 175, 80, 0.15);
+        --model-answer-border: #4caf50;
+        --model-answer-text: #c8e6c9;
+    }
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Segoe UI', system-ui, sans-serif;
+    }
+
+    body {
+        background-color: var(--bg-color);
+        background-image: 
+            linear-gradient(to right, var(--gradient-color) 1px, transparent 1px),
+            linear-gradient(to bottom, var(--gradient-color) 1px, transparent 1px),
+            var(--background-pattern);
+        background-size: 
+            40px 40px,
+            40px 40px,
+            52px 26px;
+        color: var(--text-color);
+        transition: background-color 0.3s ease, color 0.3s ease;
+        line-height: 1.6;
+        min-height: 100vh;
+    }
+
+    .quiz-container {
+        max-width: 1200px;
+        margin: 2rem auto;
+        padding: 2rem;
+        background: var(--card-bg);
+        border-radius: 20px;
+        box-shadow: 0 15px 50px rgba(0,0,0,0.1);
+        border: 1px solid var(--border-color);
+        backdrop-filter: blur(10px);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .quiz-container::before {
+        content: '🤖📝✨';
+        position: absolute;
+        top: -50px;
+        right: -50px;
+        font-size: 120px;
+        opacity: 0.05;
+        transform: rotate(15deg);
+        z-index: 0;
+    }
+
+
+    .quiz-header {
+        text-align: center;
+        font-size: 2.2rem;
+        font-weight: 700;
+        margin-bottom: 2rem;
+        color: white;
+        padding: 1.5rem;
+        background: var(--quiz-header-bg);
+        border-radius: 15px;
+        box-shadow: 0 6px 20px rgba(42, 103, 111, 0.3);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .quiz-header::after {
+        content: '📘';
+        position: absolute;
+        right: 20px;
+        top: 50%;
+        transform: translateY(-50%);
+        opacity: 0.15;
+        font-size: 3rem;
+    }
+
+    .quiz-subtitle {
+        text-align: center;
+        font-size: 1.2rem;
+        color: var(--text-color);
+        margin-bottom: 1.5rem;
+        padding: 1rem;
+        background: var(--glass-bg);
+        border-radius: 10px;
+        border-left: 5px solid var(--primary-color);
+    }
+
+    .controls {
+        text-align: center;
+        margin-bottom: 2rem;
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+        flex-wrap: wrap;
+        padding: 1.5rem;
+        background: var(--glass-bg);
+        backdrop-filter: blur(10px);
+        border-radius: 15px;
+        border: 1px solid var(--glass-border);
+        box-shadow: var(--glass-shadow);
+    }
+
+    .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.9rem 1.8rem;
+        background: var(--button-primary-bg);
+        color: white;
+        border: none;
+        border-radius: 12px;
+        font-size: 1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        gap: 8px;
+        box-shadow: 0 4px 12px rgba(42, 103, 111, 0.2);
+        position: relative;
+        overflow: hidden;
+        min-width: 160px;
+    }
+
+    .btn::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+        transition: 0.5s;
+    }
+
+    .btn:hover:not(:disabled) {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 20px rgba(42, 103, 111, 0.3);
+    }
+
+    .btn:hover:not(:disabled)::before {
+        left: 100%;
+    }
+
+    .btn:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+    }
+
+    .btn-secondary {
+        background: var(--button-secondary-bg);
+    }
+
+    .btn-icon {
+        font-size: 1.1rem;
+    }
+
+    .question {
+        margin-bottom: 2.5rem;
+        padding: 1.8rem;
+        background: var(--card-bg);
+        border: 1px solid var(--border-color);
+        border-radius: 15px;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        position: relative;
+        overflow: visible;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    }
+
+    .question:hover {
+        transform: translateX(5px);
+        border-color: var(--primary-color);
+        box-shadow: 6px 6px 20px rgba(42, 103, 111, 0.1);
+    }
+
+    .question h3 {
+        color: var(--primary-color);
+        margin-bottom: 1.5rem;
+        font-size: 1.3rem;
+        position: relative;
+        padding-left: 10px;
+        border-left: 4px solid var(--primary-color);
+    }
+
+/* إضافة النقطة (.) تلقائياً بعد الرقم */
+    .question-number::after {
+        content: ".";
+    }
+
+    /* Textarea Styles for Essay Questions */
+    .answer-textarea {
+        width: 100%;
+        min-height: 150px;
+        padding: 1.2rem;
+        font-size: 1rem;
+        line-height: 1.5;
+        border: 2px solid var(--border-color);
+        border-radius: 15px; /* زدنا الانحناء قليلاً ليتماشى مع الأزرار */
+        background: var(--card-bg);
+        color: var(--text-color);
+        resize: vertical;
+        transition: all 0.3s ease;
+        margin-bottom: 0.3rem; /* تم التقليل */
+        font-family: 'Segoe UI', system-ui, sans-serif;
+        box-shadow: inset 0 2px 4px rgba(0,0,0,0.03); /* ظل داخلي خفيف */
+    }
+
+    .answer-textarea:focus {
+        outline: none;
+        border-color: var(--primary-color);
+        box-shadow: 0 0 0 3px rgba(42, 103, 111, 0.1);
+    }
+
+/* أضف هذا في نهاية الـ CSS */
+@keyframes pulse-btn {
+    0% { box-shadow: 0 0 0 0 rgba(42, 103, 111, 0.4); }
+    70% { box-shadow: 0 0 0 10px rgba(42, 103, 111, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(42, 103, 111, 0); }
+}
+
+/* سيتم تفعيل هذا الكلاس تلقائياً لأننا عطلنا الزر أثناء التحميل */
+.check-btn:disabled {
+    opacity: 0.8;
+    cursor: wait;
+    /* إذا أردت تفعيل النبض فقط لزر الـ AI، يمكننا إضافته يدوياً، لكن التغيير البسيط في الشفافية كافٍ حالياً */
+}
+
+
+	
+
+    .answer-actions {
+        display: flex;
+        gap: 1rem;
+        margin-top: 0.3rem; /* تم التقليل */
+        flex-wrap: wrap;
+    }
+
+    .check-btn {
+        padding: 0.7rem 1.2rem; /* تقليل الحواف */
+        background: var(--button-primary-bg);
+        color: white;
+        border: none;
+        border-radius: 50px; /* شكل كبسولة حديث */
+        font-weight: 600;
+        font-size: 0.95rem;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        flex: 1;
+        min-width: 120px; /* تقليل العرض الأدنى */
+        justify-content: center;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1); /* ظل خفيف */
+    }
+
+    .check-btn:hover:not(:disabled) {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 12px rgba(42, 103, 111, 0.25);
+    }
+
+    .check-btn:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+    }
+
+    .btn-show-answer {
+        background: var(--button-secondary-bg);
+    }
+
+.btn-check-ai {
+        /* تدرج من الغامق إلى الأفتح قليلاً، يعطي عمقاً */
+        background: linear-gradient(135deg, #164e63, #2a676f); 
+        color: white; /* تأكيد لون النص */
+    }
+    
+
+    .ai-loading {
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        border: 3px solid rgba(255,255,255,0.3);
+        border-radius: 50%;
+        border-top-color: white;
+        animation: spin 1s ease-in-out infinite;
+        margin-right: 8px;
+    }
+
+    @keyframes spin {
+        to { transform: rotate(360deg); }
+    }
+
+.feedback-content {
+    margin-top: 0;
+    line-height: 1.5;
+}
+
+.feedback-content strong {
+    color: var(--ai-color);
+    font-weight: 700;
+}
+
+  /* Model Answer Styles - Modern Look */
+    .model-answer-container {
+        margin-top: 1rem;
+        border-radius: 12px;
+        background: var(--card-bg); /* لون البطاقة نظيف */
+        border: 1px solid var(--border-color);
+        border-left: 5px solid #2e7d32; /* خط جانبي أخضر فخم */
+        box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        display: none;
+        animation: fadeIn 0.3s ease;
+        overflow: hidden;
+        position: relative;
+    }
+
+    /* تأثير تدرج خفيف جداً في الخلفية للدلالة على الصحة */
+    .model-answer-container::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(to right, rgba(46, 125, 50, 0.05), transparent);
+        pointer-events: none;
+        z-index: 0;
+    }
+
+    .model-answer-container.show {
+        display: block;
+    }
+
+    .model-answer-header {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 1rem 1.5rem 0.5rem; /* مسافات مرتبة */
+        font-weight: 700;
+        font-size: 1.1rem;
+        color: #1b5e20; /* أخضر غامق مقروء */
+        position: relative;
+        z-index: 1;
+    }
+
+    .model-answer-content {
+        padding: 0 1.5rem 1.5rem; /* دمجنا المحتوى مع العنوان */
+        line-height: 1.6;
+        font-size: 1rem;
+        color: var(--text-color);
+        opacity: 0.95;
+        position: relative;
+        z-index: 1;
+    }
+
+    .formatted-answer {
+        white-space: pre-wrap;
+        font-family: 'Segoe UI', system-ui, sans-serif;
+    }
+
+    .formatted-answer ul {
+        margin-left: 1.2rem;
+        margin-top: 0.5rem;
+    }
+
+    .formatted-answer li {
+        margin-bottom: 0.4rem;
+    } 
+    /* AI Response Styles */
+/* ابحث عن .ai-response وعدلها لتصبح هكذا */
+/* AI Response Styles Modernized */
+    .ai-response {
+        margin-top: 1rem;
+        padding: 1.5rem;
+        background: var(--ai-answer-bg); /* سيستخدم اللون الجديد */
+        border-left: 5px solid var(--ai-answer-border); /* خط جانبي أنيق */
+        border-radius: 4px 16px 16px 16px; /* حواف عصرية */
+        color: var(--ai-answer-text);
+        display: none;
+        animation: fadeIn 0.5s ease;
+        position: relative;
+    }
+    
+    /* إزالة الحدود الكاملة القديمة إذا كانت موجودة */
+    .ai-response {
+        border-top: none;
+        border-right: none;
+        border-bottom: none;
+    }
+
+    .ai-response.show {
+        display: block;
+    }
+
+    .ai-response-header {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 1rem;
+        font-weight: 700;
+        font-size: 1.1rem;
+        color: var(--ai-color);
+    }
+
+    .ai-response-content {
+        line-height: 1.6;
+        font-size: 1rem;
+    }
+
+    .ai-response-content strong {
+        color: var(--ai-color);
+        font-weight: 700;
+    }
+
+    .ai-score {
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+        padding: 6px 14px;
+        border-radius: 20px;
+        font-weight: 700;
+        font-size: 0.95rem;
+        margin-bottom: 0.6rem;
+        color: white;
+    }
+
+    .score-excellent {
+        background-color: var(--score-excellent);
+    }
+
+    .score-good {
+        background-color: var(--score-good);
+    }
+
+    .score-poor {
+        background-color: var(--score-poor);
+    }
+
+    .quiz-progress {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 2rem;
+        padding: 1rem;
+        background: var(--glass-bg);
+        border-radius: 10px;
+        border: 1px solid var(--glass-border);
+    }
+
+    .progress-bar {
+        flex-grow: 1;
+        height: 10px;
+        background: var(--border-color);
+        border-radius: 5px;
+        margin: 0 1rem;
+        overflow: hidden;
+    }
+
+    .progress-fill {
+        height: 100%;
+        background: var(--primary-color);
+        border-radius: 5px;
+        transition: width 0.3s ease;
+    }
+
+    .progress-text {
+        font-weight: 600;
+        color: var(--primary-color);
+        white-space: nowrap;
+    }
+
+    /* Slides Section */
+    .slides-section {
+        margin-top: 3rem;
+        padding-top: 2rem;
+        border-top: 3px dashed var(--primary-color);
+    }
+
+    .slides-header {
+        background: var(--quiz-header-bg);
+        color: white;
+        padding: 1.5rem;
+        border-radius: 15px;
+        margin: 2.5rem 0;
+        font-size: 1.8rem;
+        font-weight: 700;
+        text-align: center;
+        box-shadow: 0 6px 20px rgba(42, 103, 111, 0.3);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .slides-header::after {
+        content: '📚';
+        position: absolute;
+        right: 20px;
+        top: 50%;
+        transform: translateY(-50%);
+        opacity: 0.15;
+        font-size: 2.5rem;
+    }
+
+    .pdf-controls {
+        display: flex;
+        justify-content: center;
+        gap: 1.2rem;
+        margin-bottom: 2rem;
+        flex-wrap: wrap;
+    }
+
+    .pdf-btn {
+        padding: 0.9rem 1.8rem;
+        background: var(--glass-bg);
+        border: 1px solid var(--glass-border);
+        border-radius: 10px;
+        color: var(--text-color);
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        backdrop-filter: blur(5px);
+    }
+
+    .pdf-btn:hover {
+        background: var(--button-primary-bg);
+        color: white;
+        transform: translateY(-2px);
+    }
+
+    .pdf-btn.active {
+        background: var(--button-primary-bg);
+        color: white;
+        border-color: transparent;
+        box-shadow: 0 4px 12px rgba(42, 103, 111, 0.3);
+    }
+
+    .pdf-viewer-container {
+        background: var(--slide-bg);
+        border-radius: 15px;
+        overflow: hidden;
+        margin-bottom: 2rem;
+        border: 1px solid var(--border-color);
+        box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        min-height: 600px;
+        height: 70vh;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .pdf-viewer-header {
+        background: var(--quiz-header-bg);
+        color: white;
+        padding: 1rem 1.5rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        flex-shrink: 0;
+    }
+
+    .pdf-viewer-title {
+        font-size: 1.2rem;
+        font-weight: 600;
+    }
+
+    .pdf-controls-small {
+        display: flex;
+        gap: 0.5rem;
+    }
+
+    .pdf-nav-btn {
+        background: rgba(255, 255, 255, 0.2);
+        color: white;
+        border: 1px solid rgba(255, 255, 255, 0.4);
+        border-radius: 8px;
+        padding: 0.5rem 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        font-size: 1rem;
+        transition: all 0.3s ease;
+        min-width: 50px;
+    }
+
+    .pdf-nav-btn:hover {
+        background: rgba(255, 255, 255, 0.3);
+        transform: scale(1.05);
+    }
+
+    .pdf-frame-container {
+        flex-grow: 1;
+        position: relative;
+        overflow: hidden;
+        min-height: 500px;
+    }
+
+    .pdf-frame {
+        width: 100%;
+        height: 100%;
+        border: none;
+        min-height: 500px;
+    }
+
+    .pdf-loading {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background: var(--slide-bg);
+        z-index: 10;
+    }
+
+    .pdf-loading-spinner {
+        width: 50px;
+        height: 50px;
+        border: 5px solid var(--border-color);
+        border-top: 5px solid var(--primary-color);
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+        margin-bottom: 1rem;
+    }
+
+    .pdf-loading-text {
+        color: var(--text-color);
+        font-weight: 500;
+    }
+
+    .mobile-pdf-list {
+        display: none;
+        flex-direction: column;
+        gap: 1rem;
+        margin-bottom: 2rem;
+    }
+
+    .mobile-pdf-item {
+        background: var(--card-bg);
+        border: 1px solid var(--border-color);
+        border-radius: 12px;
+        padding: 1.2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        transition: all 0.3s ease;
+    }
+
+    .mobile-pdf-item:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+    }
+
+    .mobile-pdf-info {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .mobile-pdf-icon {
+        font-size: 2rem;
+    }
+
+    .mobile-pdf-details {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .mobile-pdf-name {
+        font-weight: 600;
+        font-size: 1.1rem;
+        color: var(--text-color);
+    }
+
+    .mobile-pdf-size {
+        font-size: 0.9rem;
+        color: var(--text-color);
+        opacity: 0.7;
+    }
+
+    .mobile-pdf-actions {
+        display: flex;
+        gap: 0.5rem;
+        flex-wrap: wrap;
+    }
+
+    .mobile-pdf-btn {
+        padding: 0.5rem 1rem;
+        border-radius: 8px;
+        border: none;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        white-space: nowrap;
+    }
+
+    .mobile-pdf-btn.open-btn {
+        background: var(--button-primary-bg);
+        color: white;
+    }
+
+    .mobile-pdf-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .footer-note {
+        text-align: center;
+        margin: 3rem 0 1rem;
+        padding: 1.5rem;
+        color: var(--primary-color);
+        font-size: 1.1rem;
+        border-top: 2px solid rgba(42, 103, 111, 0.2);
+        opacity: 0.9;
+        font-weight: 600;
+        background: var(--glass-bg);
+        border-radius: 15px;
+        backdrop-filter: blur(5px);
+    }
+
+    [data-theme="dark"] .footer-note {
+        color: var(--secondary-color);
+        border-color: rgba(169, 138, 80, 0.3);
+    }
+
+    .hidden {
+        display: none;
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(15px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+
+    @media (max-width: 1024px) {
+        .quiz-container {
+            margin: 1rem;
+            padding: 1.5rem;
+        }
+        
+        .quiz-header, .slides-header {
+            font-size: 1.7rem;
+            padding: 1.2rem;
+        }
+        
+        .pdf-viewer-container {
+            min-height: 500px;
+            height: 65vh;
+        }
+    }
+
+   @media (max-width: 768px) {
+        .controls {
+            flex-direction: row;
+            flex-wrap: wrap;
+            gap: 10px;
+            padding: 1rem;
+        }
+        
+        .btn {
+            width: auto;
+            flex: 1 1 calc(50% - 10px); /* توزيع 50% لكل زر */
+            margin: 0;
+            min-width: unset; /* إلغاء العرض الأدنى الكبير */
+            padding: 0.8rem 0.8rem;
+            font-size: 0.85rem;
+        }
+        
+        .answer-actions {
+            flex-direction: row; /* إجبارها تكون بجانب بعض */
+            gap: 10px;
+        }
+        
+        .check-btn {
+            flex: 1; /* يأخذون مساحة متساوية */
+            min-width: auto;
+            padding: 0.8rem;
+            font-size: 0.9rem;
+        }
+        
+        .pdf-controls {
+            display: none !important;
+        }
+        
+        .desktop-viewer {
+            display: none !important;
+        }
+        
+        .mobile-pdf-list {
+            display: flex;
+        }
+        
+        .pdf-viewer-container {
+            min-height: 500px;
+            height: 60vh;
+        }
+        
+        .mobile-pdf-item {
+            flex-direction: column;
+            text-align: center;
+            gap: 1rem;
+        }
+        
+        .mobile-pdf-info {
+            flex-direction: column;
+            text-align: center;
+        }
+        
+        .mobile-pdf-actions {
+            width: 100%;
+            justify-content: center;
+        }
+        
+        .mobile-pdf-btn {
+            flex: 1;
+            max-width: 120px;
+        }
+        
+        .question h3 {
+            font-size: 1.1rem;
+        }
+        
+        .answer-textarea {
+            min-height: 120px;
+            padding: 1rem;
+        }
+    }
+
+    @media (min-width: 769px) {
+        .mobile-pdf-list {
+            display: none !important;
+        }
+        
+        .desktop-viewer {
+            display: flex !important;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .quiz-header, .slides-header {
+            font-size: 1.4rem;
+            padding: 1rem;
+        }
+        
+        .pdf-viewer-container {
+            min-height: 300px;
+            height: 50vh;
+        }
+        
+        .pdf-nav-btn {
+            padding: 0.4rem 0.8rem;
+            min-width: 45px;
+        }
+        
+        .answer-actions {
+            flex-direction: column;
+        }
+        
+        .check-btn {
+            flex: 1;
+            width: 100%;
+        }
+    }
+</style>
+</head>
+<body>
+    <div class="quiz-container">
+        <div class="quiz-header">
+            Final Selected Topics
+        </div>
+
+        <div class="quiz-progress">
+            <div class="progress-text">Progress:</div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="quiz-progress" style="width: 0%"></div>
+            </div>
+            <div class="progress-text"><span id="answered-count">0</span>/8 Answered</div>
+        </div>
+        
+        <div class="controls">
+            <button class="btn" onclick="resetAllAnswers()">
+                <span class="btn-icon">🔄</span> Reset
+            </button>
+            <button class="btn" onclick="showAllModelAnswers()">
+                <span class="btn-icon">👁️</span> Show All Answers
+            </button>
+            <button class="btn" onclick="hideAllModelAnswers()">
+                <span class="btn-icon">🙈</span> Hide All Answers
+            </button>
+            <button class="btn btn-secondary" id="themeToggle" onclick="toggleTheme()">
+                <span class="btn-icon">🌙</span> Dark
+            </button>
+            <button class="btn btn-secondary" id="slidesToggle" onclick="toggleSlides()">
+                <span class="btn-icon">📚</span> سلايدات مفيدة
+            </button>
+        </div>
+
+        <!-- Questions Section -->
+        <div id="questions-section">
+            <!-- Question 1 -->
+            <div class="question" id="question1">
+                <h3><span class="question-number">1</span> Explain the concept and importance of Large Language Models (LLM).</h3>
+                <textarea class="answer-textarea" id="answer1" placeholder="Type your answer here..."></textarea>
+                
+                <div class="answer-actions">
+    <button class="check-btn btn-check-ai" onclick="checkWithAI(1)" id="ai-btn-1">
+        <span class="btn-icon">🤖</span> Check (Ai)
+    </button>
+    <button class="check-btn btn-show-answer" onclick="showModelAnswer(1)">
+        <span class="btn-icon">📘</span> Show Answer
+    </button>
+</div>
+                
+                <div class="model-answer-container" id="model-answer1">
+                    <div class="model-answer-header">
+                        <span>✅</span> Formal Answer
+                    </div>
+                    <div class="model-answer-content formatted-answer">
+• LLMs are advanced AI models that understand and generate human language.
+• Trained on large datasets.
+• They predict the next word or sequence in a sentence.
+• Useful for tasks like:
+  - Text generation
+  - Translation
+  - Summarization
+  - Question-answering
+                    </div>
+                </div>
+                
+                <div class="ai-response" id="ai-response1">
+                    <div class="ai-response-content" id="ai-response-content1">
+                        <!-- AI response will appear here -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 2 -->
+            <div class="question" id="question2">
+                <h3><span class="question-number">2</span> How can python in programming languages be involved in LLM?</h3>
+                <textarea class="answer-textarea" id="answer2" placeholder="Type your answer here..."></textarea>
+                
+                <div class="answer-actions">
+    <button class="check-btn btn-check-ai" onclick="checkWithAI(2)" id="ai-btn-2">
+        <span class="btn-icon">🤖</span> Check (Ai)
+    </button>
+    <button class="check-btn btn-show-answer" onclick="showModelAnswer(2)">
+        <span class="btn-icon">📘</span> Show Answer
+    </button>
+</div>
+                
+                <div class="model-answer-container" id="model-answer2">
+                    <div class="model-answer-header">
+                        <span>✅</span> Formal Answer
+                    </div>
+                    <div class="model-answer-content formatted-answer">
+• Python is a popular programming language used in LLM development.
+• It has libraries like TensorFlow and PyTorch for building neural networks.
+• Used for:
+  - Data processing (like cleaning and tokenizing text)
+  - Training and fine-tuning models
+  - Implementing machine learning algorithms
+  - Running experiments and evaluating performance
+                    </div>
+                </div>
+                
+                <div class="ai-response" id="ai-response2">
+                    <div class="ai-response-content" id="ai-response-content2">
+                        <!-- AI response will appear here -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 3 -->
+            <div class="question" id="question3">
+                <h3><span class="question-number">3</span> What are the main stages of Large Language Models (LLM)?</h3>
+                <textarea class="answer-textarea" id="answer3" placeholder="Type your answer here..."></textarea>
+                
+                <div class="answer-actions">
+    <button class="check-btn btn-check-ai" onclick="checkWithAI(3)" id="ai-btn-3">
+        <span class="btn-icon">🤖</span> Check (Ai)
+    </button>
+    <button class="check-btn btn-show-answer" onclick="showModelAnswer(3)">
+        <span class="btn-icon">📘</span> Show Answer
+    </button>
+</div>
+                
+                <div class="model-answer-container" id="model-answer3">
+                    <div class="model-answer-header">
+                        <span>✅</span> Formal Answer
+                    </div>
+                    <div class="model-answer-content formatted-answer">
+• Data Collection: Gathering large text data from different sources.
+• Data Preprocessing: Cleaning and preparing the data (e.g., removing errors, breaking text into tokens).
+• Model Training: Teaching the model using the data to predict text patterns.
+• Fine-tuning: Adjusting the model for specific tasks (e.g., translation).
+• Evaluation: Testing the model to check how well it performs.
+• Deployment: Using the model in real-world applications.
+                    </div>
+                </div>
+                
+                <div class="ai-response" id="ai-response3">
+                    <div class="ai-response-content" id="ai-response-content3">
+                        <!-- AI response will appear here -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 4 -->
+            <div class="question" id="question4">
+                <h3><span class="question-number">4</span> Name two AI algorithms that can be applied for LLM.</h3>
+                <textarea class="answer-textarea" id="answer4" placeholder="Type your answer here..."></textarea>
+                
+                <div class="answer-actions">
+    <button class="check-btn btn-check-ai" onclick="checkWithAI(4)" id="ai-btn-4">
+        <span class="btn-icon">🤖</span> Check (Ai)
+    </button>
+    <button class="check-btn btn-show-answer" onclick="showModelAnswer(4)">
+        <span class="btn-icon">📘</span> Show Answer
+    </button>
+</div>
+                
+                <div class="model-answer-container" id="model-answer4">
+                    <div class="model-answer-header">
+                        <span>✅</span> Formal Answer
+                    </div>
+                    <div class="model-answer-content formatted-answer">
+• Transformers
+• Recurrent Neural Networks (RNNs)
+• Long Short-Term Memory (LSTM)
+                    </div>
+                </div>
+                
+                <div class="ai-response" id="ai-response4">
+                    <div class="ai-response-content" id="ai-response-content4">
+                        <!-- AI response will appear here -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 5 -->
+            <div class="question" id="question5">
+                <h3><span class="question-number">5</span> What metrics are used to evaluate the performance of LLMs?</h3>
+                <textarea class="answer-textarea" id="answer5" placeholder="Type your answer here..."></textarea>
+                
+                <div class="answer-actions">
+    <button class="check-btn btn-check-ai" onclick="checkWithAI(5)" id="ai-btn-5">
+        <span class="btn-icon">🤖</span> Check (Ai)
+    </button>
+    <button class="check-btn btn-show-answer" onclick="showModelAnswer(5)">
+        <span class="btn-icon">📘</span> Show Answer
+    </button>
+</div>
+                
+                <div class="model-answer-container" id="model-answer5">
+                    <div class="model-answer-header">
+                        <span>✅</span> Formal Answer
+                    </div>
+                    <div class="model-answer-content formatted-answer">
+• Accuracy: Measures the percentage of correct predictions made by the model.
+• Confusion Matrix: A table that shows the number of true positives, false positives, true negatives, and false negatives, helping to assess the model's classification performance.
+                    </div>
+                </div>
+                
+                <div class="ai-response" id="ai-response5">
+                    <div class="ai-response-content" id="ai-response-content5">
+                        <!-- AI response will appear here -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 6 -->
+            <div class="question" id="question6">
+                <h3><span class="question-number">6</span> How can we assess the quality of outputs generated by LLMs?</h3>
+                <textarea class="answer-textarea" id="answer6" placeholder="Type your answer here..."></textarea>
+                
+                <div class="answer-actions">
+    <button class="check-btn btn-check-ai" onclick="checkWithAI(6)" id="ai-btn-6">
+        <span class="btn-icon">🤖</span> Check (Ai)
+    </button>
+    <button class="check-btn btn-show-answer" onclick="showModelAnswer(6)">
+        <span class="btn-icon">📘</span> Show Answer
+    </button>
+</div>
+                
+                <div class="model-answer-container" id="model-answer6">
+                    <div class="model-answer-header">
+                        <span>✅</span> Formal Answer
+                    </div>
+                    <div class="model-answer-content formatted-answer">
+• Human Evaluation: Review by experts or users for fluency, relevance, and accuracy.
+• Accuracy: How correct the generated text is.
+• Fluency: How naturally the text reads.
+• Relevance: How closely the output matches the input.
+                    </div>
+                </div>
+                
+                <div class="ai-response" id="ai-response6">
+                    <div class="ai-response-content" id="ai-response-content6">
+                        <!-- AI response will appear here -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 7 -->
+            <div class="question" id="question7">
+                <h3><span class="question-number">7</span> What is the difference between evaluating an LLM using computational metrics and human evaluation?</h3>
+                <textarea class="answer-textarea" id="answer7" placeholder="Type your answer here..."></textarea>
+                
+                <div class="answer-actions">
+    <button class="check-btn btn-check-ai" onclick="checkWithAI(7)" id="ai-btn-7">
+        <span class="btn-icon">🤖</span> Check (Ai)
+    </button>
+    <button class="check-btn btn-show-answer" onclick="showModelAnswer(7)">
+        <span class="btn-icon">📘</span> Show Answer
+    </button>
+</div>
+                
+                <div class="model-answer-container" id="model-answer7">
+                    <div class="model-answer-header">
+                        <span>✅</span> Formal Answer
+                    </div>
+                    <div class="model-answer-content formatted-answer">
+• Computational Metrics: Fast, automatic numbers like accuracy that measure how correct the model is, but they miss things like meaning or quality.
+• Human Evaluation: People read and judge the model's answers, checking if they make sense and are useful. It's slower but gives a better understanding.
+                    </div>
+                </div>
+                
+                <div class="ai-response" id="ai-response7">
+                    <div class="ai-response-content" id="ai-response-content7">
+                        <!-- AI response will appear here -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 8 -->
+            <div class="question" id="question8">
+                <h3><span class="question-number">8</span> How do factors like prompt engineering, data splitting, data improvement, and training on diverse data affect the evaluation of Large Language Models (LLMs)?</h3>
+                <textarea class="answer-textarea" id="answer8" placeholder="Type your answer here..."></textarea>
+                
+               <div class="answer-actions">
+    <button class="check-btn btn-check-ai" onclick="checkWithAI(8)" id="ai-btn-8">
+        <span class="btn-icon">🤖</span> Check (Ai)
+    </button>
+    <button class="check-btn btn-show-answer" onclick="showModelAnswer(8)">
+        <span class="btn-icon">📘</span> Show Answer
+    </button>
+</div>
+                
+                <div class="model-answer-container" id="model-answer8">
+                    <div class="model-answer-header">
+                        <span>✅</span> Formal Answer
+                    </div>
+                    <div class="model-answer-content formatted-answer">
+• Prompt Engineering: Clear prompts help the model give better answers, making evaluation more accurate.
+• Data Splitting: Splitting data into training and test sets helps check how well the model works on new data.
+• Data Improvement: Better data (cleaning, adding useful features) helps the model perform well, leading to better evaluation.
+• Training on Diverse Data: Training on different kinds of data helps the model work well in many situations, leading to a more complete evaluation.
+• More Data, Better Performance: The more data the model is trained on, the better it can learn, leading to better evaluation results.
+                    </div>
+                </div>
+                
+                <div class="ai-response" id="ai-response8">
+                    <div class="ai-response-content" id="ai-response-content8">
+                        <!-- AI response will appear here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slides Section -->
+        <div class="slides-section hidden" id="slides-section">
+            <div class="slides-header">
+                سلايدات مفيدة
+            </div>
+            
+            <div class="pdf-controls">
+                <button class="pdf-btn active" onclick="loadPdf('UU_EktaVats_AI_Physics.pdf', 'AI Physics Slides')">
+                    <span>📄</span> AI Physics Slides
+                </button>
+            </div>
+
+            <!-- Desktop PDF Viewer -->
+            <div class="pdf-viewer-container desktop-viewer">
+                <div class="pdf-viewer-header">
+                    <div class="pdf-viewer-title" id="pdf-title">AI Physics Slides</div>
+                    <div class="pdf-controls-small">
+                        <button class="pdf-nav-btn" onclick="downloadPdf()" title="Download">⤓</button>
+                    </div>
+                </div>
+                <div class="pdf-frame-container">
+                    <div class="pdf-loading" id="pdf-loading">
+                        <div class="pdf-loading-spinner"></div>
+                        <div class="pdf-loading-text">Loading PDF...</div>
+                    </div>
+                    <iframe class="pdf-frame" id="pdf-frame" src="UU_EktaVats_AI_Physics.pdf" frameborder="0"></iframe>
+                </div>
+            </div>
+
+            <!-- Mobile PDF List -->
+            <div class="mobile-pdf-list">
+                <div class="mobile-pdf-item">
+                    <div class="mobile-pdf-info">
+                        <div class="mobile-pdf-icon">📄</div>
+                        <div class="mobile-pdf-details">
+                            <div class="mobile-pdf-name">AI Physics Slides</div>
+                            <div class="mobile-pdf-size">PDF</div>
+                        </div>
+                    </div>
+                    <div class="mobile-pdf-actions">
+                        <button class="mobile-pdf-btn open-btn" onclick="openPdfMobile('UU_EktaVats_AI_Physics.pdf')">Open</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="controls">
+                <button class="btn" onclick="toggleSlides()">
+                    <span class="btn-icon">←</span> العودة إلى الأسئلة
+                </button>
+            </div>
+        </div>
+
+        <div class="footer-note">
+            دعواتكم للمساعد الخفي والعاملين على الموقع بالتوفيق والسداد والزوجة الصالحة
+        </div>
+    </div>
+
+    <script>
+    // Questions data
+    const questions = [
+        {
+            id: 1,
+            question: "Explain the concept and importance of Large Language Models (LLM)."
+        },
+        {
+            id: 2,
+            question: "How can python in programming languages be involved in LLM?"
+        },
+        {
+            id: 3,
+            question: "What are the main stages of Large Language Models (LLM)?"
+        },
+        {
+            id: 4,
+            question: "Name two AI algorithms that can be applied for LLM."
+        },
+        {
+            id: 5,
+            question: "What metrics are used to evaluate the performance of LLMs?"
+        },
+        {
+            id: 6,
+            question: "How can we assess the quality of outputs generated by LLMs?"
+        },
+        {
+            id: 7,
+            question: "What is the difference between evaluating an LLM using computational metrics and human evaluation?"
+        },
+        {
+            id: 8,
+            question: "How do factors like prompt engineering, data splitting, data improvement, and training on diverse data affect the evaluation of Large Language Models (LLMs)?"
+        }
+    ];
+
+// AI Prompt: Encouraging but Technicallly Strict
+    const aiPromptTemplate = (question, userAnswer) => `
+    TASK: Evaluate the student answer provided below immediately.
+    
+    CRITICAL RULES:
+    1. Do NOT reply with conversational filler like "Okay", "I am ready", or "Sure".
+    2. Start your response DIRECTLY with the "Score:" line.
+    
+    ----------------
+    QUESTION: ${question}
+    ANSWER: ${userAnswer}
+    ----------------
+    
+    Give a score (0-100%) and brief feedback (2-3 sentences max).
+    Be encouraging and not too strict.
+
+    REQUIRED FORMAT:
+    Score: X% [Excellent/Good/Fair/Needs Improvement]
+    Feedback: [Your feedback here]
+    `;
+
+    // Theme toggle
+    function toggleTheme() {
+        const body = document.body;
+        const themeToggle = document.getElementById('themeToggle');
+        
+        if(body.getAttribute('data-theme') === 'dark') {
+            body.removeAttribute('data-theme');
+            themeToggle.innerHTML = '<span class="btn-icon">🌙</span> Dark';
+            localStorage.setItem('theme', 'light');
+        } else {
+            body.setAttribute('data-theme', 'dark');
+            themeToggle.innerHTML = '<span class="btn-icon">☀️</span> Light';
+            localStorage.setItem('theme', 'dark');
+        }
+    }
+
+    // Slides toggle
+    let slidesVisible = false;
+    function toggleSlides() {
+        const slidesSection = document.getElementById('slides-section');
+        const slidesToggle = document.getElementById('slidesToggle');
+        const questionsSection = document.getElementById('questions-section');
+        
+        if(!slidesVisible) {
+            slidesSection.classList.remove('hidden');
+            questionsSection.style.display = 'none';
+            slidesToggle.innerHTML = '<span class="btn-icon">📝</span> الأسئلة';
+            slidesVisible = true;
+            slidesSection.scrollIntoView({ behavior: 'smooth' });
+        } else {
+            slidesSection.classList.add('hidden');
+            questionsSection.style.display = 'block';
+            slidesToggle.innerHTML = '<span class="btn-icon">📚</span> سلايدات مفيدة';
+            slidesVisible = false;
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    }
+
+    // PDF functionality
+    function loadPdf(pdfFile, title) {
+        document.getElementById('pdf-title').textContent = title;
+        
+        const loading = document.getElementById('pdf-loading');
+        const frame = document.getElementById('pdf-frame');
+        
+        loading.style.display = 'flex';
+        frame.style.display = 'none';
+        
+        frame.src = pdfFile;
+        
+        frame.onload = function() {
+            setTimeout(() => {
+                loading.style.display = 'none';
+                frame.style.display = 'block';
+            }, 500);
+        };
+    }
+
+    function downloadPdf() {
+        const link = document.createElement('a');
+        link.href = 'UU_EktaVats_AI_Physics.pdf';
+        link.download = 'UU_EktaVats_AI_Physics.pdf';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    }
+
+    // Mobile PDF functions
+    function openPdfMobile(pdfFile) {
+        window.open(pdfFile, '_blank');
+    }
+
+    // Reset all answers
+    function resetAllAnswers() {
+        for (let i = 1; i <= 8; i++) {
+            document.getElementById(`answer${i}`).value = '';
+            document.getElementById(`model-answer${i}`).classList.remove('show');
+            document.getElementById(`ai-response${i}`).classList.remove('show');
+            const aiBtn = document.getElementById(`ai-btn-${i}`);
+            aiBtn.disabled = false;
+            aiBtn.innerHTML = '<span class="btn-icon">🤖</span> Check answer (AI)';
+        }
+        // Enable all AI buttons
+        const allAiButtons = document.querySelectorAll('.btn-check-ai');
+        allAiButtons.forEach(btn => {
+            btn.disabled = false;
+            btn.innerHTML = '<span class="btn-icon">🤖</span> Check answer (AI)';
+        });
+        updateProgress();
+    }
+
+    // Show all model answers
+    function showAllModelAnswers() {
+        for (let i = 1; i <= 8; i++) {
+            document.getElementById(`model-answer${i}`).classList.add('show');
+        }
+    }
+
+    // Hide all model answers
+    function hideAllModelAnswers() {
+        for (let i = 1; i <= 8; i++) {
+            document.getElementById(`model-answer${i}`).classList.remove('show');
+        }
+    }
+
+    // Show model answer for specific question
+    function showModelAnswer(questionNumber) {
+        const answerContainer = document.getElementById(`model-answer${questionNumber}`);
+        answerContainer.classList.toggle('show');
+        
+        // Scroll to show the answer
+        answerContainer.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+
+    // AI API call with smart feedback
+    async function callAIWithRetry(prompt, maxRetries = 3, updateStatusCallback) {
+        let lastError;
+        
+        for (let attempt = 1; attempt <= maxRetries; attempt++) {
+            try {
+                // If it's a retry (attempt > 1), show a friendly message
+                if (attempt > 1 && updateStatusCallback) {
+                    updateStatusCallback("جاري تحليل أدق للإجابة..."); // رسالة لطيفة بدلاً من Retry
+                }
+
+                console.log(`AI attempt ${attempt} of ${maxRetries}`);
+                const response = await apifree.chat(prompt);
+                
+                if (response && response.trim().length > 10) {
+                    return response;
+                } else {
+                    throw new Error("Empty or invalid response from AI");
+                }
+                
+            } catch (error) {
+                lastError = error;
+                console.log(`Attempt ${attempt} failed:`, error.message);
+                
+                if (attempt < maxRetries) {
+                    // Slight delay before retry to be gentle on API
+                    if (updateStatusCallback) updateStatusCallback("لحظات بسيطة..."); 
+                    await new Promise(r => setTimeout(r, 1500));
+                    continue;
+                }
+            }
+        }
+        
+        throw lastError || new Error("All retry attempts failed");
+    }
+
+    // Process AI response (Cleaned & Fixed)
+    function processAIResponse(aiText) {
+        let response = aiText.trim();
+        
+        // 1. Extract score
+        const scoreMatch = response.match(/(\d+)%/);
+        let score = 0;
+        let scoreClass = "score-poor";
+        let scoreText = "Needs Improvement";
+        
+        if (scoreMatch) {
+            score = parseInt(scoreMatch[1]);
+            if (score >= 80) {
+                scoreClass = "score-excellent";
+                scoreText = "Excellent";
+            } else if (score >= 60) {
+                scoreClass = "score-good";
+                scoreText = "Good";
+            } else if (score >= 40) {
+                scoreClass = "score-good";
+                scoreText = "Fair";
+            }
+        }
+        
+        // 2. Clean up feedback content
+        // Remove the entire "Score: ..." line first
+        let feedback = response.replace(/^Score:.*$/im, '').trim();
+        
+        // Remove "Feedback:" prefix
+        feedback = feedback.replace(/^Feedback:\s*/i, '');
+        
+        // 3. Fix the specific issue: Remove repeated rating words at the start
+        // This handles "ExcellentThe", "Good.", "Needs Improvement - " etc.
+        const redundantPrefixes = [
+            /^Excellent[\s.:-]*\s*/i,
+            /^Good[\s.:-]*\s*/i,
+            /^Fair[\s.:-]*\s*/i,
+            /^Needs Improvement[\s.:-]*\s*/i,
+            // Catch stuck words like "ExcellentThe"
+            /^Excellent(?=[A-Z])/i,
+            /^Good(?=[A-Z])/i,
+            /^Fair(?=[A-Z])/i,
+            /^Needs Improvement(?=[A-Z])/i
+        ];
+        
+        redundantPrefixes.forEach(regex => {
+            feedback = feedback.replace(regex, '');
+        });
+
+        // Final clean up
+        feedback = feedback.trim();
+        
+        // Fallback if empty
+        if (!feedback || feedback.length < 5) {
+            feedback = "No detailed feedback provided, but good effort!";
+        }
+        
+        return {
+            score: score,
+            scoreClass: scoreClass,
+            scoreText: scoreText,
+            feedback: feedback
+        };
+    }
+
+    // Check answer with AI
+    let isAIRequestInProgress = false;
+
+    async function checkWithAI(questionNumber) {
+        const userAnswer = document.getElementById(`answer${questionNumber}`).value.trim();
+        const currentAiBtn = document.getElementById(`ai-btn-${questionNumber}`); // الزر الحالي
+        const aiResponse = document.getElementById(`ai-response${questionNumber}`);
+        const aiContent = document.getElementById(`ai-response-content${questionNumber}`);
+        
+        if (!userAnswer) {
+            alert("Please type an answer before checking with AI!");
+            return;
+        }
+        
+        if (isAIRequestInProgress) {
+            alert("Please wait for the current AI evaluation to complete.");
+            return;
+        }
+        
+        // Disable buttons
+        isAIRequestInProgress = true;
+        const allButtons = document.querySelectorAll('.btn-check-ai, .btn-show-answer'); // تعطيل كل الأزرار مؤقتاً
+        allButtons.forEach(btn => btn.disabled = true);
+
+        // Loading state on the specific button
+        const originalBtnText = currentAiBtn.innerHTML;
+        currentAiBtn.innerHTML = '<span class="ai-loading"></span> جارٍ التحقق (يمكن أن يستغرق عدة ثواني)...';
+        
+        try {
+            const question = questions.find(q => q.id === questionNumber).question;
+            const prompt = aiPromptTemplate(question, userAnswer);
+            
+            // Call AI with a callback to update button text if it takes long
+            const aiRawResponse = await callAIWithRetry(prompt, 3, (statusText) => {
+                currentAiBtn.innerHTML = `<span class="ai-loading"></span> ${statusText}`;
+            });
+            
+            const result = processAIResponse(aiRawResponse);
+            
+            aiContent.innerHTML = `
+                <div class="ai-score ${result.scoreClass}">${result.score}% ${result.scoreText}</div>
+                <div class="feedback-content">
+                    <strong>Feedback:</strong> ${result.feedback}
+                </div>
+            `;
+            aiResponse.classList.add('show');
+            aiResponse.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            
+            // Success cool down
+            setTimeout(() => {
+                isAIRequestInProgress = false;
+                allButtons.forEach(btn => btn.disabled = false);
+                currentAiBtn.innerHTML = originalBtnText; // استرجاع النص الأصلي
+            }, 2000);
+            
+        } catch (error) {
+            console.error("AI Error:", error);
+            aiContent.innerHTML = '<div class="ai-score score-poor">Error</div><div class="feedback-content"><strong>Feedback:</strong> تعذر الاتصال بالذكاء الاصطناعي حالياً، حاول مرة أخرى لاحقاً.</div>';
+            aiResponse.classList.add('show');
+            aiResponse.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            
+            isAIRequestInProgress = false;
+            allButtons.forEach(btn => btn.disabled = false);
+            currentAiBtn.innerHTML = originalBtnText;
+        }
+        
+        updateProgress();
+    }
+
+    // Update progress bar
+    function updateProgress() {
+        let answeredCount = 0;
+        
+        for (let i = 1; i <= 8; i++) {
+            if (document.getElementById(`answer${i}`).value.trim() !== '') {
+                answeredCount++;
+            }
+        }
+        
+        const progressPercent = Math.round((answeredCount / 8) * 100);
+        document.getElementById('answered-count').textContent = answeredCount;
+        document.getElementById('quiz-progress').style.width = `${progressPercent}%`;
+    }
+
+    // Initialize on page load
+    document.addEventListener('DOMContentLoaded', () => {
+        // Initialize theme
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        const themeToggle = document.getElementById('themeToggle');
+        
+        if(savedTheme === 'dark') {
+            document.body.setAttribute('data-theme', 'dark');
+            themeToggle.innerHTML = '<span class="btn-icon">☀️</span> Light';
+        }
+        
+        // Add input event listeners to textareas
+        for (let i = 1; i <= 8; i++) {
+            document.getElementById(`answer${i}`).addEventListener('input', updateProgress);
+        }
+        
+        // Initialize PDF viewer
+        const frame = document.getElementById('pdf-frame');
+        if (frame) {
+            frame.onload = function() {
+                setTimeout(() => {
+                    const loading = document.getElementById('pdf-loading');
+                    if (loading) loading.style.display = 'none';
+                    frame.style.display = 'block';
+                }, 800);
+            };
+        }
+        
+        // Test AI API
+        console.log("AI API Loaded:", typeof apifree !== 'undefined');
+    });
+</script>
+</body>
+</html>
